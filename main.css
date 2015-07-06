@@ -1,0 +1,25 @@
+header{
+	color:#5cb85c;
+}
+
+form{
+	width:50%;
+}
+
+#guess{
+	border:1px solid #4cae4c;
+}
+
+.jumbotron{
+	border: 2px solid #5cb85c;
+}
+
+#hint{
+	color:#5cb85c;
+	background-color:white;
+	border:1px solid #4cae4c;
+}
+
+#hint:hover{
+	background-color:#DEF1DE;
+}
