@@ -9,7 +9,7 @@ form{
 .winner{
 	background-color: #DEF1DE;
 }
-#guess{
+.guess{
 	border:1px solid #4cae4c;
 }
 
@@ -27,9 +27,6 @@ form{
 	background-color:#BCE4BC;
 }
 
-#guess.error{
-	border-color:1 px solid red;
-}
 
 .warning, .hot{
 	color:red;
@@ -38,3 +35,4 @@ form{
 .cold{
 	color:blue;
 }
+

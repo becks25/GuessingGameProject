@@ -15,36 +15,33 @@
 			</header>
 
 			<div class="text-center jumbotron">
-				<h1 class="win"></h1>
+				<h1 class="win blankstart"></h1>
 				<form class="center-block setup">
 					<div class="form-group setup">
 						<label class="control-label">Pick a number between 1 and 100</label>
-						<div class="">
-							<input type="number" id="guess" class="form-control text-center">
+						<div>
+							<input type="number" id="guess" class="guess form-control text-center">
+							<h5 class="help-block"></h5>
 						</div>
-						<h5 class="warning"></h5>
 					</div>
 
 					<div class="form-group setup">
-
 						<button type="button" id="playersguess" class="btn btn-success btn-default btn-block">Guess!</button>
 					</div>
 
 					<p>You have <span id="count">5</span> guesses remaining.</p>
 
-					<p class="how_close"></p>
+					<h3 class="how_close blankstart"></h3>
 
-					<p class="guesses"></p>
+					<p class="guesses blankstart"></p>
 
 				</form>	
 
 			</div>
 
 				<div class="row text-center">
-
 					<button type="button" id="hint" class="option_btn btn setup">Hint</button>
 					<button type="button" id="new_game" class="option_btn btn">New Game</button>
-
 				</div>
 		</div>
 
