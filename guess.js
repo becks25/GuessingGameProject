@@ -3,6 +3,7 @@ $(document).ready(function(){
 	var number;
 	var num_guesses;
 	var prev_guesses = [];
+	var guesses_text = "";
 	reset();
 
 	$('.center-block').on('click', 'button', guess_num);
@@ -15,10 +16,14 @@ $(document).ready(function(){
 		}
 	});
 
+	$('#hint').on('click', gameover);
+
+	$('#new_game').on('click', reset);
+
 	function guess_num(){
-		var warning = $(this).closest('.center-block').find('.warning');
-		var guess = $(this).closest('.center-block').find('#guess');
-		var message = $(this).closest('.jumbotron').find('.how_close');
+		var jumbo = $(this).closest('.jumbotron');
+		var warning = jumbo.find('.warning');
+		var guess = jumbo.find('#guess');
 		var input = +guess.val();
 		guess.val('');
 		var hotness = '';
@@ -26,7 +31,6 @@ $(document).ready(function(){
 		var repeat = false;
 		guess.css('border-color','#4cae4c');
 		warning.text('');
-		console.log(prev_guesses);
 
 		//test to make sure that the number is a number between 0 and 100
 		if(input>0 && input <100){
@@ -43,7 +47,9 @@ $(document).ready(function(){
 				$('#count').text(num_guesses);
 				//check to see if the number is right
 				if(input == number){
-
+					$('.setup').hide();
+					jumbo.find('.win').html("<h1>" + number + "<br />You win!!</h1>");
+					$('body').addClass('winner');
 				}else{
 					//check if input is higher or lower than the number
 					if(input>number){
@@ -54,15 +60,18 @@ $(document).ready(function(){
 
 					hotness = howfar(input);
 
-					message.text('You are '+ hotness + '. Guess '+ direction);
+					jumbo.find('.how_close').text('You are '+ hotness + '. Guess '+ direction);
 					num_guesses = num_guesses-1;
 					prev_guesses.push(input);
+					$('.guesses').html(guesses_text);
+
 
 					if(num_guesses == -1){
 						gameover();
 					}
 				}
 			}
+
 		}else{
 			//if the entry isn't a number between 1 and 100, change the input box border to red and 
 			//show a warning
@@ -72,19 +81,21 @@ $(document).ready(function(){
 		
 	}
 
-	$('#hint').on('click', function(){
-		gameover();
 
-		$(this).closest('.row').find('.how_close').text('The number is: ' + number);
-	});
-
-	$('#new_game').on('click', reset);
 
 	function howfar(input){
 		var diff = Math.abs(input-number);
+
+		
 		var prev_diff = Math.abs(prev_guesses[prev_guesses.length-1] - number);
 
 		if(prev_guesses.length == 0){
+			if(diff>40){
+				guesses_text += "<span class='cold'>" + input + "</span>, ";
+			}else{
+				guesses_text += "<span class='hot'>" + input + "</span>, ";
+			}
+
 			if(diff<10){
 				return 'on fire';
 			}else if(diff<20){
@@ -104,8 +115,10 @@ $(document).ready(function(){
 			}
 		}else{
 			if(diff<prev_diff){
+				guesses_text += "<span class='hot'>" + input + "</span>, ";
 				return 'getting warmer!';
 			}else{
+				guesses_text += "<span class='cold'>" + input + "</span>, ";
 				return 'getting colder :(';
 			}
 		}
@@ -114,18 +127,24 @@ $(document).ready(function(){
 	}
 
 	function gameover(){
-		$('.how_close').text('Game over!');
+		$('.how_close').html('Game over! <br /> The number is: ' + number);
 		$('.form-group').hide();
 		$('#count').text('0');
 
 	}
 
+
 	//reset or start a new game
 	function reset(){
+		$('body').removeClass('winner');
 		number = Math.floor(Math.random()*100);
 		num_guesses = 4;
 		prev_guesses = [];
-		$('.form-group').show();
+		guesses_text = "";
+		$('.win').text('');
+		$('.guesses').html(guesses_text);
+
+		$('.setup').show();
 		$('.how_close').text('');
 		$('#count').text('5');
 		$('#guess').val('');

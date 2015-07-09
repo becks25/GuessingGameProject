@@ -15,8 +15,9 @@
 			</header>
 
 			<div class="text-center jumbotron">
-				<form class="center-block">
-					<div class="form-group">
+				<h1 class="win"></h1>
+				<form class="center-block setup">
+					<div class="form-group setup">
 						<label class="control-label">Pick a number between 1 and 100</label>
 						<div class="">
 							<input type="number" id="guess" class="form-control text-center">
@@ -24,23 +25,27 @@
 						<h5 class="warning"></h5>
 					</div>
 
-					<div class="form-group">
+					<div class="form-group setup">
 
 						<button type="button" id="playersguess" class="btn btn-success btn-default btn-block">Guess!</button>
 					</div>
-				</form>
 
-				<div class="row">
 					<p>You have <span id="count">5</span> guesses remaining.</p>
 
 					<p class="how_close"></p>
 
-					<button type="button" id="hint" class="option_btn btn ">Hint</button>
+					<p class="guesses"></p>
+
+				</form>	
+
+			</div>
+
+				<div class="row text-center">
+
+					<button type="button" id="hint" class="option_btn btn setup">Hint</button>
 					<button type="button" id="new_game" class="option_btn btn">New Game</button>
 
 				</div>
-
-			</div>
 		</div>
 
 		    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

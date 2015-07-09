@@ -6,6 +6,9 @@ form{
 	width:50%;
 }
 
+.winner{
+	background-color: #DEF1DE;
+}
 #guess{
 	border:1px solid #4cae4c;
 }
@@ -15,19 +18,23 @@ form{
 }
 
 .option_btn{
-	color:#5cb85c;
-	background-color:white;
+	color:#4cae4c;
+	background-color:#DEF1DE;
 	border:1px solid #4cae4c;
 }
 
 .option_btn:hover{
-	background-color:#DEF1DE;
+	background-color:#BCE4BC;
 }
 
 #guess.error{
 	border-color:1 px solid red;
 }
 
-.warning{
+.warning, .hot{
 	color:red;
+}
+
+.cold{
+	color:blue;
 }
