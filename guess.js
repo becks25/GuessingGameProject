@@ -34,9 +34,16 @@ console.log(number);
 		//test to make sure that the number is a number between 0 and 100
 		if(input>0 && input <100){
 
+			if(!Number.isInteger(input)){
+				hasError();
+				warning.text("Please enter a whole number.");
+				return null;
+			}
+
 			//check to see if input is a repeat
 			for(var i = 0; i<prev_guesses.length; i++){
 				if(prev_guesses[i]==input){
+					hasError();
 					warning.text("You've already guessed that number.  Please pick a different one.");
 					return null;
 				}
@@ -75,7 +82,7 @@ console.log(number);
 		}else{
 			//if the entry isn't a number between 1 and 100, change the input box border to red and 
 			//show a warning
-			guess.parent().addClass('has-error');
+			hasError();
 			warning.text('Please enter a valid number between 1 and 100');
 		}
 		
@@ -132,6 +139,9 @@ console.log(number);
 
 	}
 
+	function hasError(){
+		$('#guess').parent().addClass('has-error');
+	}
 
 	//reset or start a new game
 	function reset(){
