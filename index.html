@@ -21,6 +21,7 @@
 						<div class="">
 							<input type="number" id="guess" class="form-control text-center">
 						</div>
+						<h5 class="warning"></h5>
 					</div>
 
 					<div class="form-group">
@@ -32,12 +33,19 @@
 				<div class="row">
 					<p>You have <span id="count">5</span> guesses remaining.</p>
 
-					<button type="button" id="hint" class="btn">Hint</button>
+					<p class="how_close"></p>
+
+					<button type="button" id="hint" class="option_btn btn ">Hint</button>
+					<button type="button" id="new_game" class="option_btn btn">New Game</button>
 
 				</div>
 
 			</div>
 		</div>
+
+		    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="guess.js"></script>
+
 
 	</body>
 </html>
