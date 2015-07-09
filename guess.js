@@ -28,7 +28,6 @@ $(document).ready(function(){
 		var input = +guess.val();
 		var direction = '';
 
-console.log(number);
 		cleanup();
 
 		//test to make sure that the number is a number between 0 and 100
