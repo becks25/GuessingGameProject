@@ -14,12 +14,20 @@ form{
 	border: 2px solid #5cb85c;
 }
 
-#hint{
+.option_btn{
 	color:#5cb85c;
 	background-color:white;
 	border:1px solid #4cae4c;
 }
 
-#hint:hover{
+.option_btn:hover{
 	background-color:#DEF1DE;
+}
+
+#guess.error{
+	border-color:1 px solid red;
+}
+
+.warning{
+	color:red;
 }
