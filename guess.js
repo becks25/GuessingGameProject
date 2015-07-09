@@ -7,16 +7,26 @@ $(document).ready(function(){
 
 	$('.center-block').on('click', 'button', guess_num);
 
+	//call function is enter is pressed
+	$('.center-block').keydown(function(event){
+		if(event.keyCode == 13){
+			event.preventDefault();
+			guess_num.call($('.center-block'));
+		}
+	});
+
 	function guess_num(){
 		var warning = $(this).closest('.center-block').find('.warning');
 		var guess = $(this).closest('.center-block').find('#guess');
 		var message = $(this).closest('.jumbotron').find('.how_close');
 		var input = +guess.val();
+		guess.val('');
 		var hotness = '';
 		var direction = '';
 		var repeat = false;
 		guess.css('border-color','#4cae4c');
 		warning.text('');
+		console.log(prev_guesses);
 
 		//test to make sure that the number is a number between 0 and 100
 		if(input>0 && input <100){
